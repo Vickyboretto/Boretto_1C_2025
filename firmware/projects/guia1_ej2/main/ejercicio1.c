@@ -1,8 +1,17 @@
-/*! @mainpage Blinking switch
+/*! @mainpage Template
  *
- * \section genDesc General Description
+ * @section genDesc General Description
  *
- * This example makes LED_1 and LED_2 blink if SWITCH_1 or SWITCH_2 are pressed.
+ * This section describes how the program works.
+ *
+ * <a href="https://drive.google.com/...">Operation Example</a>
+ *
+ * @section hardConn Hardware Connection
+ *
+ * |    Peripheral  |   ESP32   	|
+ * |:--------------:|:--------------|
+ * | 	PIN_X	 	| 	GPIO_X		|
+ *
  *
  * @section changelog Changelog
  *
@@ -23,7 +32,8 @@
 #include "led.h"
 #include "switch.h"
 /*==================[macros and definitions]=================================*/
-#define CONFIG_BLINK_PERIOD 1000
+#define CONFIG_BLINK_PERIOD 100
+
 /*==================[internal data definition]===============================*/
 
 /*==================[internal functions declaration]=========================*/
@@ -31,21 +41,35 @@
 /*==================[external functions definition]==========================*/
 void app_main(void){
 	uint8_t teclas;
+	bool flagswitch1 = false;
+	bool flagswitch2 = false;
 	LedsInit();
 	SwitchesInit();
     while(1)    {
     	teclas  = SwitchesRead();
     	switch(teclas){
     		case SWITCH_1:
-    			LedToggle(LED_1);
+    			flagswitch1 = !flagswitch1;
     		break;
     		case SWITCH_2:
-    			LedToggle(LED_2);
+    			flagswitch2 = !flagswitch2;
     		break;
+		}
+		if(flagswitch1 && !flagswitch2){
+			LedToggle(LED_1);
 			
-
-    	}
-	    LedToggle(LED_3);
+		}
+		else if(flagswitch2 && !flagswitch1){
+			LedToggle(LED_2);
+		
+		}
+		else if(flagswitch1 && flagswitch2){
+			LedToggle(LED_1);
+			LedToggle(LED_2);
+		
+		}
+	    //LedToggle(LED_3);
 		vTaskDelay(CONFIG_BLINK_PERIOD / portTICK_PERIOD_MS);
 	}
 }
+/*==================[end of file]============================================*/
