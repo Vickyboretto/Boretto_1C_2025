@@ -1,10 +1,12 @@
-/*! @mainpage Template
+/*! @mainpage Ejercicio 6 de la guia 1
  *
- * @section genDesc General Description
+ * @section se realiza el ejercicio 6
  *
- * This section describes how the program works.
+ * El ejercicio consiste en darle un valor a data, el cual es covertido a BCD, 
+ * luego el BCD es utilizado para escribir el numero en los gpio, y cada gpio es enviado
+ * a su vez a los LCD, mostrando en la pantalla el numero ingresado en data.
  *
- * <a href="https://drive.google.com/...">Operation Example</a>
+ * 
  *
  * @section hardConn Hardware Connection
  *
@@ -19,7 +21,7 @@
  * |:----------:|:-----------------------------------------------|
  * | 12/09/2023 | Document creation		                         |
  *
- * @author Albano Peñalva (albano.penalva@uner.edu.ar)
+ * @author Maria Victoria Boretto (vickybore00@gmail.com)
  *
  */
 
