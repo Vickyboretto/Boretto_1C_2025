@@ -1,17 +1,8 @@
-/*! @mainpage Template
+/*! @mainpage Ejercicio 3 de la guia 1
  *
- * @section genDesc General Description
+ * @section se resuelve el ejercicio 3
  *
- * This section describes how the program works.
- *
- * <a href="https://drive.google.com/...">Operation Example</a>
- *
- * @section hardConn Hardware Connection
- *
- * |    Peripheral  |   ESP32   	|
- * |:--------------:|:--------------|
- * | 	PIN_X	 	| 	GPIO_X		|
- *
+ * En este ejercicio se controla el funcionamiento de LEDs prendiendo, apagando o haciendo que parpadeen dependiendo el estado de las variables ON, OFF y TOGGLE
  *
  * @section changelog Changelog
  *
@@ -19,7 +10,7 @@
  * |:----------:|:-----------------------------------------------|
  * | 12/09/2023 | Document creation		                         |
  *
- * @author Albano Peñalva (albano.penalva@uner.edu.ar)
+ * @author Maria Victoria Boretto
  *
  */
 

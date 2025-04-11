@@ -149,10 +149,13 @@ defines</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Funciones</h2></td></tr>
 <tr class="memitem:a13ba8aac6e82373bcdd6f04600e4d2ee" id="r_a13ba8aac6e82373bcdd6f04600e4d2ee"><td class="memItemLeft" align="right" valign="top">int8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a13ba8aac6e82373bcdd6f04600e4d2ee">convertToBCD</a> (uint32_t data, uint8_t digits, uint8_t *bcdArray)</td></tr>
+<tr class="memdesc:a13ba8aac6e82373bcdd6f04600e4d2ee"><td class="mdescLeft">&#160;</td><td class="mdescRight">Funcion que convierte data (numero) a BCD.  <br /></td></tr>
 <tr class="separator:a13ba8aac6e82373bcdd6f04600e4d2ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aaaf467da9caa3969e05b7349aeb15708" id="r_aaaf467da9caa3969e05b7349aeb15708"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aaaf467da9caa3969e05b7349aeb15708">BCDtoGPIO</a> (uint8_t digit, <a class="el" href="structgpio_conf__t.html">gpioConf_t</a> *gpio_config)</td></tr>
+<tr class="memdesc:aaaf467da9caa3969e05b7349aeb15708"><td class="mdescLeft">&#160;</td><td class="mdescRight">Funcion que utiliza el data en BCD para apagar o prender los GPIO (mostrando los dígitos)  <br /></td></tr>
 <tr class="separator:aaaf467da9caa3969e05b7349aeb15708"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9194293bea1525f19aa82e6409df6249" id="r_a9194293bea1525f19aa82e6409df6249"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9194293bea1525f19aa82e6409df6249">GPIOtoLCD</a> (uint32_t data, uint8_t digits, <a class="el" href="structgpio_conf__t.html">gpioConf_t</a> *<a class="el" href="#a01e745f4453b9ebbc6df0e1cb37062f9">gpio_digit</a>, <a class="el" href="structgpio_conf__t.html">gpioConf_t</a> *<a class="el" href="#a1119911c902317f45ee6d5ca50770bc0">gpio_map</a>)</td></tr>
+<tr class="memdesc:a9194293bea1525f19aa82e6409df6249"><td class="mdescLeft">&#160;</td><td class="mdescRight">Funcion que muestra los digitos del numero ingresado en el LCD.  <br /></td></tr>
 <tr class="separator:a9194293bea1525f19aa82e6409df6249"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a630544a7f0a2cc40d8a7fefab7e2fe70" id="r_a630544a7f0a2cc40d8a7fefab7e2fe70"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a630544a7f0a2cc40d8a7fefab7e2fe70">app_main</a> (void)</td></tr>
 <tr class="separator:a630544a7f0a2cc40d8a7fefab7e2fe70"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -177,7 +180,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definición en la línea <a class="el" href="guia1__ej6_8c_source.html#l00044">44</a> del archivo <a class="el" href="guia1__ej6_8c_source.html">guia1_ej6.c</a>.</p>
+<p class="definition">Definición en la línea <a class="el" href="guia1__ej6_8c_source.html#l00031">31</a> del archivo <a class="el" href="guia1__ej6_8c_source.html">guia1_ej6.c</a>.</p>
 
 </div>
 </div>
@@ -193,7 +196,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definición en la línea <a class="el" href="guia1__ej6_8c_source.html#l00043">43</a> del archivo <a class="el" href="guia1__ej6_8c_source.html">guia1_ej6.c</a>.</p>
+<p class="definition">Definición en la línea <a class="el" href="guia1__ej6_8c_source.html#l00030">30</a> del archivo <a class="el" href="guia1__ej6_8c_source.html">guia1_ej6.c</a>.</p>
 
 </div>
 </div>
@@ -209,7 +212,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definición en la línea <a class="el" href="guia1__ej6_8c_source.html#l00039">39</a> del archivo <a class="el" href="guia1__ej6_8c_source.html">guia1_ej6.c</a>.</p>
+<p class="definition">Definición en la línea <a class="el" href="guia1__ej6_8c_source.html#l00026">26</a> del archivo <a class="el" href="guia1__ej6_8c_source.html">guia1_ej6.c</a>.</p>
 
 </div>
 </div>
@@ -225,7 +228,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definición en la línea <a class="el" href="guia1__ej6_8c_source.html#l00040">40</a> del archivo <a class="el" href="guia1__ej6_8c_source.html">guia1_ej6.c</a>.</p>
+<p class="definition">Definición en la línea <a class="el" href="guia1__ej6_8c_source.html#l00027">27</a> del archivo <a class="el" href="guia1__ej6_8c_source.html">guia1_ej6.c</a>.</p>
 
 </div>
 </div>
@@ -241,7 +244,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definición en la línea <a class="el" href="guia1__ej6_8c_source.html#l00041">41</a> del archivo <a class="el" href="guia1__ej6_8c_source.html">guia1_ej6.c</a>.</p>
+<p class="definition">Definición en la línea <a class="el" href="guia1__ej6_8c_source.html#l00028">28</a> del archivo <a class="el" href="guia1__ej6_8c_source.html">guia1_ej6.c</a>.</p>
 
 </div>
 </div>
@@ -257,7 +260,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definición en la línea <a class="el" href="guia1__ej6_8c_source.html#l00042">42</a> del archivo <a class="el" href="guia1__ej6_8c_source.html">guia1_ej6.c</a>.</p>
+<p class="definition">Definición en la línea <a class="el" href="guia1__ej6_8c_source.html#l00029">29</a> del archivo <a class="el" href="guia1__ej6_8c_source.html">guia1_ej6.c</a>.</p>
 
 <p class="reference">Referenciado por <a class="el" href="gpio__mcu_8c_source.html#l00067">GPIOInit()</a>.</p>
 
@@ -275,7 +278,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definición en la línea <a class="el" href="guia1__ej6_8c_source.html#l00045">45</a> del archivo <a class="el" href="guia1__ej6_8c_source.html">guia1_ej6.c</a>.</p>
+<p class="definition">Definición en la línea <a class="el" href="guia1__ej6_8c_source.html#l00032">32</a> del archivo <a class="el" href="guia1__ej6_8c_source.html">guia1_ej6.c</a>.</p>
 
 </div>
 </div>
@@ -295,9 +298,9 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definición en la línea <a class="el" href="guia1__ej6_8c_source.html#l00120">120</a> del archivo <a class="el" href="guia1__ej6_8c_source.html">guia1_ej6.c</a>.</p>
+<p class="definition">Definición en la línea <a class="el" href="guia1__ej6_8c_source.html#l00117">117</a> del archivo <a class="el" href="guia1__ej6_8c_source.html">guia1_ej6.c</a>.</p>
 
-<p class="reference">Hace referencia a <a class="el" href="guia1__ej6_8c_source.html#l00061">gpio_digit</a>, <a class="el" href="guia1__ej6_8c_source.html#l00055">gpio_map</a> y <a class="el" href="guia1__ej6_8c_source.html#l00099">GPIOtoLCD()</a>.</p>
+<p class="reference">Hace referencia a <a class="el" href="guia1__ej6_8c_source.html#l00048">gpio_digit</a>, <a class="el" href="guia1__ej6_8c_source.html#l00042">gpio_map</a> y <a class="el" href="guia1__ej6_8c_source.html#l00096">GPIOtoLCD()</a>.</p>
 
 </div>
 </div>
@@ -320,11 +323,13 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definición en la línea <a class="el" href="guia1__ej6_8c_source.html#l00086">86</a> del archivo <a class="el" href="guia1__ej6_8c_source.html">guia1_ej6.c</a>.</p>
+<p>Funcion que utiliza el data en BCD para apagar o prender los GPIO (mostrando los dígitos) </p>
+
+<p class="definition">Definición en la línea <a class="el" href="guia1__ej6_8c_source.html#l00079">79</a> del archivo <a class="el" href="guia1__ej6_8c_source.html">guia1_ej6.c</a>.</p>
 
 <p class="reference">Hace referencia a <a class="el" href="gpio__mcu_8c_source.html#l00067">GPIOInit()</a>, <a class="el" href="gpio__mcu_8c_source.html#l00086">GPIOOff()</a> y <a class="el" href="gpio__mcu_8c_source.html#l00081">GPIOOn()</a>.</p>
 
-<p class="reference">Referenciado por <a class="el" href="guia1__ej6_8c_source.html#l00099">GPIOtoLCD()</a>.</p>
+<p class="reference">Referenciado por <a class="el" href="guia1__ej6_8c_source.html#l00096">GPIOtoLCD()</a>.</p>
 
 </div>
 </div>
@@ -352,9 +357,11 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definición en la línea <a class="el" href="guia1__ej6_8c_source.html#l00069">69</a> del archivo <a class="el" href="guia1__ej6_8c_source.html">guia1_ej6.c</a>.</p>
+<p>Funcion que convierte data (numero) a BCD. </p>
 
-<p class="reference">Referenciado por <a class="el" href="guia1__ej6_8c_source.html#l00099">GPIOtoLCD()</a>.</p>
+<p class="definition">Definición en la línea <a class="el" href="guia1__ej6_8c_source.html#l00059">59</a> del archivo <a class="el" href="guia1__ej6_8c_source.html">guia1_ej6.c</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="guia1__ej6_8c_source.html#l00096">GPIOtoLCD()</a>.</p>
 
 </div>
 </div>
@@ -387,11 +394,13 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definición en la línea <a class="el" href="guia1__ej6_8c_source.html#l00099">99</a> del archivo <a class="el" href="guia1__ej6_8c_source.html">guia1_ej6.c</a>.</p>
+<p>Funcion que muestra los digitos del numero ingresado en el LCD. </p>
 
-<p class="reference">Hace referencia a <a class="el" href="guia1__ej6_8c_source.html#l00086">BCDtoGPIO()</a>, <a class="el" href="guia1__ej6_8c_source.html#l00069">convertToBCD()</a>, <a class="el" href="guia1__ej6_8c_source.html#l00061">gpio_digit</a>, <a class="el" href="guia1__ej6_8c_source.html#l00055">gpio_map</a>, <a class="el" href="gpio__mcu_8c_source.html#l00067">GPIOInit()</a>, <a class="el" href="gpio__mcu_8c_source.html#l00086">GPIOOff()</a> y <a class="el" href="gpio__mcu_8c_source.html#l00081">GPIOOn()</a>.</p>
+<p class="definition">Definición en la línea <a class="el" href="guia1__ej6_8c_source.html#l00096">96</a> del archivo <a class="el" href="guia1__ej6_8c_source.html">guia1_ej6.c</a>.</p>
 
-<p class="reference">Referenciado por <a class="el" href="guia1__ej6_8c_source.html#l00120">app_main()</a>.</p>
+<p class="reference">Hace referencia a <a class="el" href="guia1__ej6_8c_source.html#l00079">BCDtoGPIO()</a>, <a class="el" href="guia1__ej6_8c_source.html#l00059">convertToBCD()</a>, <a class="el" href="guia1__ej6_8c_source.html#l00048">gpio_digit</a>, <a class="el" href="guia1__ej6_8c_source.html#l00042">gpio_map</a>, <a class="el" href="gpio__mcu_8c_source.html#l00067">GPIOInit()</a>, <a class="el" href="gpio__mcu_8c_source.html#l00086">GPIOOff()</a> y <a class="el" href="gpio__mcu_8c_source.html#l00081">GPIOOn()</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="guia1__ej6_8c_source.html#l00117">app_main()</a>.</p>
 
 </div>
 </div>
@@ -412,13 +421,13 @@ Variables</h2></td></tr>
 <div class="line">    {<a class="code hl_define" href="#a58ae2dbc23a6a91dbf4ff4a06eb8d5a5">GPIO_18</a>, 1}, </div>
 <div class="line">    {<a class="code hl_define" href="#a90279a113f4dce2ae2ccf17c0d2bc7b7">GPIO_9</a>, 1}   </div>
 <div class="line">}</div>
-<div class="ttc" id="aguia1__ej6_8c_html_a58ae2dbc23a6a91dbf4ff4a06eb8d5a5"><div class="ttname"><a href="#a58ae2dbc23a6a91dbf4ff4a06eb8d5a5">GPIO_18</a></div><div class="ttdeci">#define GPIO_18</div><div class="ttdef"><b>Definition</b> <a href="guia1__ej6_8c_source.html#l00044">guia1_ej6.c:44</a></div></div>
-<div class="ttc" id="aguia1__ej6_8c_html_a709b890b3cdc6ddf247d836c63b506e8"><div class="ttname"><a href="#a709b890b3cdc6ddf247d836c63b506e8">GPIO_19</a></div><div class="ttdeci">#define GPIO_19</div><div class="ttdef"><b>Definition</b> <a href="guia1__ej6_8c_source.html#l00043">guia1_ej6.c:43</a></div></div>
-<div class="ttc" id="aguia1__ej6_8c_html_a90279a113f4dce2ae2ccf17c0d2bc7b7"><div class="ttname"><a href="#a90279a113f4dce2ae2ccf17c0d2bc7b7">GPIO_9</a></div><div class="ttdeci">#define GPIO_9</div><div class="ttdef"><b>Definition</b> <a href="guia1__ej6_8c_source.html#l00045">guia1_ej6.c:45</a></div></div>
+<div class="ttc" id="aguia1__ej6_8c_html_a58ae2dbc23a6a91dbf4ff4a06eb8d5a5"><div class="ttname"><a href="#a58ae2dbc23a6a91dbf4ff4a06eb8d5a5">GPIO_18</a></div><div class="ttdeci">#define GPIO_18</div><div class="ttdef"><b>Definition</b> <a href="guia1__ej6_8c_source.html#l00031">guia1_ej6.c:31</a></div></div>
+<div class="ttc" id="aguia1__ej6_8c_html_a709b890b3cdc6ddf247d836c63b506e8"><div class="ttname"><a href="#a709b890b3cdc6ddf247d836c63b506e8">GPIO_19</a></div><div class="ttdeci">#define GPIO_19</div><div class="ttdef"><b>Definition</b> <a href="guia1__ej6_8c_source.html#l00030">guia1_ej6.c:30</a></div></div>
+<div class="ttc" id="aguia1__ej6_8c_html_a90279a113f4dce2ae2ccf17c0d2bc7b7"><div class="ttname"><a href="#a90279a113f4dce2ae2ccf17c0d2bc7b7">GPIO_9</a></div><div class="ttdeci">#define GPIO_9</div><div class="ttdef"><b>Definition</b> <a href="guia1__ej6_8c_source.html#l00032">guia1_ej6.c:32</a></div></div>
 </div><!-- fragment -->
-<p class="definition">Definición en la línea <a class="el" href="guia1__ej6_8c_source.html#l00061">61</a> del archivo <a class="el" href="guia1__ej6_8c_source.html">guia1_ej6.c</a>.</p>
+<p class="definition">Definición en la línea <a class="el" href="guia1__ej6_8c_source.html#l00048">48</a> del archivo <a class="el" href="guia1__ej6_8c_source.html">guia1_ej6.c</a>.</p>
 
-<p class="reference">Referenciado por <a class="el" href="guia1__ej6_8c_source.html#l00120">app_main()</a> y <a class="el" href="guia1__ej6_8c_source.html#l00099">GPIOtoLCD()</a>.</p>
+<p class="reference">Referenciado por <a class="el" href="guia1__ej6_8c_source.html#l00117">app_main()</a> y <a class="el" href="guia1__ej6_8c_source.html#l00096">GPIOtoLCD()</a>.</p>
 
 </div>
 </div>
@@ -439,14 +448,14 @@ Variables</h2></td></tr>
 <div class="line">    {<a class="code hl_define" href="#a5ddd3258e0fdd3dd9154c39debe52026">GPIO_22</a>, 1}, </div>
 <div class="line">    {<a class="code hl_define" href="#af8ab3df7d47dac548b207e4d8cd6cf58">GPIO_23</a>, 1}  </div>
 <div class="line">}</div>
-<div class="ttc" id="aguia1__ej6_8c_html_a5ddd3258e0fdd3dd9154c39debe52026"><div class="ttname"><a href="#a5ddd3258e0fdd3dd9154c39debe52026">GPIO_22</a></div><div class="ttdeci">#define GPIO_22</div><div class="ttdef"><b>Definition</b> <a href="guia1__ej6_8c_source.html#l00041">guia1_ej6.c:41</a></div></div>
-<div class="ttc" id="aguia1__ej6_8c_html_a6d8bd237a908b67b3d618378d7e7660b"><div class="ttname"><a href="#a6d8bd237a908b67b3d618378d7e7660b">GPIO_20</a></div><div class="ttdeci">#define GPIO_20</div><div class="ttdef"><b>Definition</b> <a href="guia1__ej6_8c_source.html#l00039">guia1_ej6.c:39</a></div></div>
-<div class="ttc" id="aguia1__ej6_8c_html_ae9a3d587b537152fb8391eb342cf7c98"><div class="ttname"><a href="#ae9a3d587b537152fb8391eb342cf7c98">GPIO_21</a></div><div class="ttdeci">#define GPIO_21</div><div class="ttdef"><b>Definition</b> <a href="guia1__ej6_8c_source.html#l00040">guia1_ej6.c:40</a></div></div>
-<div class="ttc" id="aguia1__ej6_8c_html_af8ab3df7d47dac548b207e4d8cd6cf58"><div class="ttname"><a href="#af8ab3df7d47dac548b207e4d8cd6cf58">GPIO_23</a></div><div class="ttdeci">#define GPIO_23</div><div class="ttdef"><b>Definition</b> <a href="guia1__ej6_8c_source.html#l00042">guia1_ej6.c:42</a></div></div>
+<div class="ttc" id="aguia1__ej6_8c_html_a5ddd3258e0fdd3dd9154c39debe52026"><div class="ttname"><a href="#a5ddd3258e0fdd3dd9154c39debe52026">GPIO_22</a></div><div class="ttdeci">#define GPIO_22</div><div class="ttdef"><b>Definition</b> <a href="guia1__ej6_8c_source.html#l00028">guia1_ej6.c:28</a></div></div>
+<div class="ttc" id="aguia1__ej6_8c_html_a6d8bd237a908b67b3d618378d7e7660b"><div class="ttname"><a href="#a6d8bd237a908b67b3d618378d7e7660b">GPIO_20</a></div><div class="ttdeci">#define GPIO_20</div><div class="ttdef"><b>Definition</b> <a href="guia1__ej6_8c_source.html#l00026">guia1_ej6.c:26</a></div></div>
+<div class="ttc" id="aguia1__ej6_8c_html_ae9a3d587b537152fb8391eb342cf7c98"><div class="ttname"><a href="#ae9a3d587b537152fb8391eb342cf7c98">GPIO_21</a></div><div class="ttdeci">#define GPIO_21</div><div class="ttdef"><b>Definition</b> <a href="guia1__ej6_8c_source.html#l00027">guia1_ej6.c:27</a></div></div>
+<div class="ttc" id="aguia1__ej6_8c_html_af8ab3df7d47dac548b207e4d8cd6cf58"><div class="ttname"><a href="#af8ab3df7d47dac548b207e4d8cd6cf58">GPIO_23</a></div><div class="ttdeci">#define GPIO_23</div><div class="ttdef"><b>Definition</b> <a href="guia1__ej6_8c_source.html#l00029">guia1_ej6.c:29</a></div></div>
 </div><!-- fragment -->
-<p class="definition">Definición en la línea <a class="el" href="guia1__ej6_8c_source.html#l00055">55</a> del archivo <a class="el" href="guia1__ej6_8c_source.html">guia1_ej6.c</a>.</p>
+<p class="definition">Definición en la línea <a class="el" href="guia1__ej6_8c_source.html#l00042">42</a> del archivo <a class="el" href="guia1__ej6_8c_source.html">guia1_ej6.c</a>.</p>
 
-<p class="reference">Referenciado por <a class="el" href="guia1__ej6_8c_source.html#l00120">app_main()</a> y <a class="el" href="guia1__ej6_8c_source.html#l00099">GPIOtoLCD()</a>.</p>
+<p class="reference">Referenciado por <a class="el" href="guia1__ej6_8c_source.html#l00117">app_main()</a> y <a class="el" href="guia1__ej6_8c_source.html#l00096">GPIOtoLCD()</a>.</p>
 
 </div>
 </div>

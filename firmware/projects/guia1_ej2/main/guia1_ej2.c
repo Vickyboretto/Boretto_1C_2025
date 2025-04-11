@@ -1,16 +1,8 @@
-/*! @mainpage Template
+/*! @mainpage Ejercicio 2 de la guia 1
  *
- * @section genDesc General Description
+ * @section se resuelve el ejercicio 2
  *
- * This section describes how the program works.
- *
- * <a href="https://drive.google.com/...">Operation Example</a>
- *
- * @section hardConn Hardware Connection
- *
- * |    Peripheral  |   ESP32   	|
- * |:--------------:|:--------------|
- * | 	PIN_X	 	| 	GPIO_X		|
+ * En este ejercicio se va a hacer titilar los leds 1 y 2 al apretar las teclas 1 y 2 respectivamente, y si se aprietan ambas va a titilar el led 3.
  *
  *
  * @section changelog Changelog
@@ -19,7 +11,7 @@
  * |:----------:|:-----------------------------------------------|
  * | 12/09/2023 | Document creation		                         |
  *
- * @author Albano Peñalva (albano.penalva@uner.edu.ar)
+ * @author MAria Victoria Boretto
  *
  */
 

@@ -108,8 +108,6 @@ var NAVTREEINDEX13 =
 "ili9341_8h_source.html":[3,0,0,0,1,0,6],
 "index.html":[],
 "index.html":[0],
-"index.html#changelog":[0,2],
-"index.html#hardConn":[0,1],
 "index.html#se":[0,0],
 "l293_8c.html":[3,0,0,0,1,1,7],
 "l293_8c.html#a01e92799f99fb681f6db217e5fcce84d":[3,0,0,0,1,1,7,1],
@@ -249,5 +247,7 @@ var NAVTREEINDEX13 =
 "projects_2guia1__ej6_2build_2bootloader_2_c_make_files_23_830_82_2_compiler_id_c_x_x_2_c_make_c_x_x_compiler_id_8cpp.html#a4b0efeb7a5d59313986b3a0390f050f6":[3,0,0,1,0,0,0,0,0,1,0,17],
 "projects_2guia1__ej6_2build_2bootloader_2_c_make_files_23_830_82_2_compiler_id_c_x_x_2_c_make_c_x_x_compiler_id_8cpp.html#a59647e99d304ed33b15cb284c27ed391":[3,0,0,1,0,0,0,0,0,1,0,16],
 "projects_2guia1__ej6_2build_2bootloader_2_c_make_files_23_830_82_2_compiler_id_c_x_x_2_c_make_c_x_x_compiler_id_8cpp.html#a81dee0709ded976b2e0319239f72d174":[3,0,0,1,0,0,0,0,0,1,0,2],
-"projects_2guia1__ej6_2build_2bootloader_2_c_make_files_23_830_82_2_compiler_id_c_x_x_2_c_make_c_x_x_compiler_id_8cpp.html#aa52ec6104623a66734cc5d5d28733bed":[3,0,0,1,0,0,0,0,0,1,0,7]
+"projects_2guia1__ej6_2build_2bootloader_2_c_make_files_23_830_82_2_compiler_id_c_x_x_2_c_make_c_x_x_compiler_id_8cpp.html#aa52ec6104623a66734cc5d5d28733bed":[3,0,0,1,0,0,0,0,0,1,0,7],
+"projects_2guia1__ej6_2build_2bootloader_2_c_make_files_23_830_82_2_compiler_id_c_x_x_2_c_make_c_x_x_compiler_id_8cpp.html#aba35d0d200deaeb06aee95ca297acb28":[3,0,0,1,0,0,0,0,0,1,0,1],
+"projects_2guia1__ej6_2build_2bootloader_2_c_make_files_23_830_82_2_compiler_id_c_x_x_2_c_make_c_x_x_compiler_id_8cpp.html#ad1280362da42492bbc11aa78cbf776ad":[3,0,0,1,0,0,0,0,0,1,0,10]
 };

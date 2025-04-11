@@ -6,20 +6,7 @@
  * luego el BCD es utilizado para escribir el numero en los gpio, y cada gpio es enviado
  * a su vez a los LCD, mostrando en la pantalla el numero ingresado en data.
  *
- * 
  *
- * @section hardConn Hardware Connection
- *
- * |    Peripheral  |   ESP32   	|
- * |:--------------:|:--------------|
- * | 	PIN_X	 	| 	GPIO_X		|
- *
- *
- * @section changelog Changelog
- *
- * |   Date	    | Description                                    |
- * |:----------:|:-----------------------------------------------|
- * | 12/09/2023 | Document creation		                         |
  *
  * @author Maria Victoria Boretto (vickybore00@gmail.com)
  *
@@ -36,6 +23,10 @@
 #include "gpio_mcu.h"
 
 /*==================[macros and definitions]=================================*/
+/**
+ *  @brief defino los GPIO que voy a utilizar y le doy sus valores correspondientes 
+**/
+
 #define GPIO_20    20
 #define GPIO_21    21
 #define GPIO_22    22
@@ -65,12 +56,21 @@ gpioConf_t gpio_digit[3] = {
 };
 
 /*==================[internal functions declaration]=========================*/
-// convierte el numero a bcd
+
+/** @fn converttoBCD
+ * @brief Funcion que convierte data (numero) a BCD
+ * @param data Valor decimal a mostrar
+ * @param digits Cantidad de digitos
+ * @param bcdArray Arreglo de BCD
+ * @return valor de -1 si no se ingreso un numero o si el numero ingresado tiene mas de 10 digitos, 
+ * 			y valor de 0 si el numero ingresado fue convertido a BCD
+ *
+ */
 int8_t convertToBCD(uint32_t data, uint8_t digits, uint8_t *bcdArray) {
 	if (digits > 10){
 		return -1; //devuelve -1 porque el valor tiene mas de 10 digitos
 	}
-//se encarga de la conversion a bcd
+	//se encarga de la conversion a bcd
     for (int i = digits - 1; i >= 0; i--) {
         bcdArray[i] = data % 10;  // Extrae el último dígito
         data /= 10;       		// Elimina el dígito extraído
@@ -82,7 +82,15 @@ int8_t convertToBCD(uint32_t data, uint8_t digits, uint8_t *bcdArray) {
 		return -1; //devuelve -1 porque no hay un numero
 	}
 }
-//usando el binario se prenden o apagan los gpio
+
+/** @fn BCDtoGPIO
+ * @brief Funcion que utiliza el data en BCD para apagar o prender los GPIO (mostrando los dígitos)
+ * @param digit Digitos del numero
+ * @param gpio_config Arreglo de 4 estructuras `gpioConf_t` que contiene la configuración 
+ *                    de cada pin GPIO (pin y dirección).
+ * @return 
+ *
+ */
 void BCDtoGPIO(uint8_t digit, gpioConf_t *gpio_config) {
     for (uint8_t i = 0; i < 4; i++) {
 		GPIOInit(gpio_config[i].pin, gpio_config[i].dir);
@@ -96,6 +104,16 @@ void BCDtoGPIO(uint8_t digit, gpioConf_t *gpio_config) {
         }
     }
 }
+
+/** @fn GPIOtoLCD 
+ * @brief Funcion que muestra los digitos del numero ingresado en el LCD
+ * @param data Valor decimal a mostrar.
+ * @param digits Cantidad de dígitos del display.
+ * @param gpio_digit Arreglo de configuración de pines para cada dígito del display.
+ * @param gpio_map Mapeo de pines GPIO para cada bit BCD.
+ * @return
+ *
+ */
  void GPIOtoLCD(uint32_t data, uint8_t digits, gpioConf_t *gpio_digit, gpioConf_t *gpio_map){
 	uint8_t bcdArray[digits];
 	uint8_t resultado = convertToBCD(data, digits, bcdArray);
@@ -109,19 +127,15 @@ void BCDtoGPIO(uint8_t digit, gpioConf_t *gpio_config) {
 			GPIOOn(gpio_digit[i].pin);
 			GPIOOff(gpio_digit[i].pin);
 		}
-		
-
 	}
-
  }
 
 
 /*==================[external functions definition]==========================*/
 void app_main(void){
-	uint32_t data = 587;   //inicializamos los numeros, digitos y el arreglo con un valor que querramos
+	uint32_t data = 587;   //inicializamos los numeros y la cantidad de digitos, esto podria ingresarse por consola para que no quede hardcodeado
     uint8_t digits = 3;
-    //uint8_t bcdArray[8] = {0}; // Inicializamos en 0
-
+    
 	GPIOtoLCD(data, digits, gpio_digit, gpio_map);
 	
 	

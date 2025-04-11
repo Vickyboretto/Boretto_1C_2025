@@ -66,8 +66,8 @@ var NAVTREEINDEX =
 "group___m_p_u6050.html#ga53ca9562881303b665299907726fb753",
 "group___m_p_u6050.html#gac74877bfb915f4a21000728965b87e34",
 "hc__sr04_8c.html#a5e52844206c91ee47dcdf1697595b43a",
-"projects_2guia1__ej6_2build_2bootloader_2_c_make_files_23_830_82_2_compiler_id_c_x_x_2_c_make_c_x_x_compiler_id_8cpp.html#aba35d0d200deaeb06aee95ca297acb28",
-"uart__mcu_8c.html#a3d16e5de491dfd7c361575b398679dd3"
+"projects_2guia1__ej6_2build_2bootloader_2_c_make_files_23_830_82_2_compiler_id_c_x_x_2_c_make_c_x_x_compiler_id_8cpp.html#adbc5372f40838899018fadbc89bd588b",
+"uart__mcu_8c.html#a9ab33647617098646990fe263600b650"
 ];
 
 var SYNCONMSG = 'pulsar para deshabilitar sincronización';

@@ -1,16 +1,8 @@
-/*! @mainpage Template
+/*! @mainpage Ejercicio 4 de la guia 1
  *
- * @section genDesc General Description
+ * @section se realiza el ejercicio 4
  *
- * This section describes how the program works.
- *
- * <a href="https://drive.google.com/...">Operation Example</a>
- *
- * @section hardConn Hardware Connection
- *
- * |    Peripheral  |   ESP32   	|
- * |:--------------:|:--------------|
- * | 	PIN_X	 	| 	GPIO_X		|
+ * En este ejercicio se convierte el numero decimal ingresado a BCD y guardando cada digito en un arreglo.
  *
  *
  * @section changelog Changelog
@@ -19,7 +11,7 @@
  * |:----------:|:-----------------------------------------------|
  * | 12/09/2023 | Document creation		                         |
  *
- * @author Albano Peñalva (albano.penalva@uner.edu.ar)
+ * @author Maria Victoria Boretto
  *
  */
 
@@ -67,11 +59,9 @@ void app_main(void){
     if (resultado == 0){
 		printf("Conversion exitosa");
 		printf("\n");
-		//printf("BCD Representation: ");
 		for (int i = 0; i < digits; i++) {
 			printf("%d ", bcdArray[i]);   //muestra el valor separado por digitos
 		}
-		
 	}
 	else {
 		printf("Conversion fallida");

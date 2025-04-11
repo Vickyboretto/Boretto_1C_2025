@@ -1,16 +1,8 @@
-/*! @mainpage Template
+/*! @mainpage Ejercicio 5 de la guia 1
  *
- * @section genDesc General Description
+ * @section se realiza el ejercicio 5
  *
- * This section describes how the program works.
- *
- * <a href="https://drive.google.com/...">Operation Example</a>
- *
- * @section hardConn Hardware Connection
- *
- * |    Peripheral  |   ESP32   	|
- * |:--------------:|:--------------|
- * | 	PIN_X	 	| 	GPIO_X		|
+ * En este ejercicio se recibe un digito en formato BCD y se lo usa para activar o desactivar los GPIO.
  *
  *
  * @section changelog Changelog
@@ -19,12 +11,9 @@
  * |:----------:|:-----------------------------------------------|
  * | 12/09/2023 | Document creation		                         |
  *
- * @author Albano Peñalva (albano.penalva@uner.edu.ar)
+ * @author Maria Victoria Boretto
  *
  */
-/*Escribir una función que reciba como parámetro un dígito BCD y un vector de estructuras del tipo gpioConf_t. 
-Incluya el archivo de cabecera gpio_mcu.h*/
-
 
 /*==================[inclusions]=============================================*/
 #include <stdio.h>
