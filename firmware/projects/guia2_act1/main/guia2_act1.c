@@ -1,16 +1,11 @@
-/*! @mainpage Template
+/*! @mainpage Actividad 1 de la guia 2: Medidor de distancia por ultrasonido
  *
- * @section genDesc General Description
+ * @section se resuelve la actividad 1
  *
- * This section describes how the program works.
- *
- * <a href="https://drive.google.com/...">Operation Example</a>
- *
- * @section hardConn Hardware Connection
- *
- * |    Peripheral  |   ESP32   	|
- * |:--------------:|:--------------|
- * | 	PIN_X	 	| 	GPIO_X		|
+ * 
+ *	El ejercicio consiste en medir una distancia con un sensor de ultrasonido y mostrar su valor en un LCD, además
+	si la distancia está entre 10 y 20 cm va a prender el LED 1, si la distancia está entre 20 y 30 cm se va a prender el LED 1 y 2, y 
+	si la distancia es mayor a 30 se van a prender los 3 LEDs.
  *
  *
  * @section changelog Changelog
@@ -19,7 +14,7 @@
  * |:----------:|:-----------------------------------------------|
  * | 12/09/2023 | Document creation		                         |
  *
- * @author Albano Peñalva (albano.penalva@uner.edu.ar)
+ * @author Maria Victoria Boretto
  *
  */
 
@@ -32,7 +27,7 @@
 #include "freertos/task.h"
 #include "switch.h"
 #include "gpio_mcu.h"
-#include "hc_sr04.h" //ultrasonido
+#include "hc_sr04.h" //sensor de ultrasonido
 #include "lcditse0803.h" //lcd
 /*==================[macros and definitions]=================================*/
 #define CONFIG_BLINK_PERIOD_SENSOR 1000
