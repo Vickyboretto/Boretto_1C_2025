@@ -2,7 +2,7 @@
  *
  * @section se resuelve la actividad 2 
  *
- * This section describes how the program works.
+ * En este ejercicio se modifica el ejercicio 1 agregando interrupciones para las teclas y los timers.
  *
  *
  *

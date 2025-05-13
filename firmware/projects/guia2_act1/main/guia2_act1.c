@@ -8,11 +8,6 @@
 	si la distancia es mayor a 30 se van a prender los 3 LEDs.
  *
  *
- * @section changelog Changelog
- *
- * |   Date	    | Description                                    |
- * |:----------:|:-----------------------------------------------|
- * | 12/09/2023 | Document creation		                         |
  *
  * @author Maria Victoria Boretto
  *
@@ -44,7 +39,9 @@ TaskHandle_t teclas_task_handle = NULL;
 TaskHandle_t visualizacion_task_handle = NULL;
 
 /*==================[internal functions declaration]=========================*/
-
+/**
+ * @brief Tarea que se encarga de medir la distancia en cm
+ */
 static void MedirTask(void *pvParameter){
     while(true){
         distancia = HcSr04ReadDistanceInCentimeters();
@@ -52,7 +49,9 @@ static void MedirTask(void *pvParameter){
 
     }
 }
-
+/**
+ * @brief Tarea que se encarga de manejar las teclas de encendido y hold
+ */
 static void TeclasTask(void *pvParameter){
 	while(true){
 		uint8_t teclas = SwitchesRead();
@@ -69,7 +68,9 @@ static void TeclasTask(void *pvParameter){
 	}
 	
 }
-
+/**
+ * @brief Tarea que se encarga de la visualización en el LCD de la distancia medida
+ */
 static void VisualizacionTask(void *pvParameter){
 	while(true){
 		if(encendido){
@@ -88,7 +89,6 @@ static void VisualizacionTask(void *pvParameter){
 				LedOn(LED_3);
 			}
 			if(!hold){
-				//printf("mostrando distancia");
 				LcdItsE0803Write(distancia);
 			}
 		}

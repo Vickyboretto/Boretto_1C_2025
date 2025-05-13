@@ -49,7 +49,6 @@ void FuncTimerA(void* param){
  */
 void FuncTecla1(void){
 	encendido = !encendido;
-
 }
 
 /**
