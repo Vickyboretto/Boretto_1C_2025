@@ -103,7 +103,7 @@ void app_main(void){
 
 	timer_config_t timer_config_b = {
     .timer = TIMER_B,
-    .period = SAMPLE_PERIOD_US/2, 
+    .period = SAMPLE_PERIOD_US/2, //es la mitad porque se muestrea al doble de la obtenida antes
     .func_p = FuncTimerB,
     .param_p = NULL
 	};
@@ -119,7 +119,7 @@ void app_main(void){
 
 	analog_input_config_t adc_config = {
 		.input = CH1,
-		.mode = ADC_SINGLE, // o como esté definido en tu plataforma
+		.mode = ADC_SINGLE, 
 		.func_p = NULL,
 		.param_p = NULL
 	};
