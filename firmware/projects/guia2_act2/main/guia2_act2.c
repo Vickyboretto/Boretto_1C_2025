@@ -36,7 +36,7 @@ TaskHandle_t medicion_visualizacion_task_handle = NULL;
  * @brief Función invocada en la interrupción del timer A
  */
 void FuncTimerA(void* param){
-    vTaskNotifyGiveFromISR(visualizacion_task_handle, pdFALSE);    /* Envía una notificación a la tarea asociada a visualizacion */
+    vTaskNotifyGiveFromISR(medicion_visualizacion_task_handle, pdFALSE);    /* Envía una notificación a la tarea asociada a visualizacion */
 }
 
 /**
