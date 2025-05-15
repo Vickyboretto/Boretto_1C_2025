@@ -2,7 +2,8 @@
  *
  * @section se resuelve la actividad 4
  *
- * This section describes how the program works.
+ * En esta actividad se convierten los datos analogicos del potenciometro conectado a la placa y se pasan al graficador.
+ * Luego se convierten los datos digitales de un ECG y se muestran en PC. 
  *
  * @author Maria Victoria Boretto
  *
