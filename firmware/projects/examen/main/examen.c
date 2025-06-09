@@ -84,7 +84,7 @@ void FuncTecla2(void){
 }
 
 /**
- * @brief Tarea que se encarga de medir la radiacion
+ * @brief Tarea que se encarga de medir la radiacion y mostrarla por PC
  */
 static void MedicionRadiacionTask(void *pvParameter){
 	while(true){
@@ -111,7 +111,7 @@ static void MedicionRadiacionTask(void *pvParameter){
 }
 
 /**
- * @brief Tarea que se encarga de medir la temperatura y la humedad
+ * @brief Tarea que se encarga de medir la temperatura y la humedad y mostrarlas por PC
  */
 static void MedicionHumedadTemperaturaTask(void *pvParameter){
 	while(true){
