@@ -119,24 +119,30 @@ static void MedicionHumedadTemperaturaTask(void *pvParameter){
 		successfull_read = dht11Read(humedad, temperatura);
 		radiacion = 0;
 		if(encendido){
-			if(successfull_read){
 			LedsOffAll(); // comienzo con los leds apagados
-			if (humedad > 85 && (0 > temperatura > 2)) { // se da el riesgo de nevada
-				riesgo_nevada = true;
-				LedOn(LED_3); // enciendo led rojo
-				LedOff(LED_1);
+			if(successfull_read){
 				UartSendString(UART_PC, "Temperatura: \r");
 				UartSendString(UART_PC, (char*)UartItoa(temperatura, 10));
 				UartSendString(UART_PC, "°C - \r");
 				UartSendString(UART_PC, "Humedad: \r");
 				UartSendString(UART_PC, (char*)UartItoa(humedad, 10));
-				UartSendString(UART_PC, "% - RIESGO DE NEVADA\r\n");
-			} else if(!riesgo_nevada && !radiacion_elevada){
-				LedOn(LED_1); // enciendo led verde
-				LedOff(LED_2);
-				LedOff(LED_3);
+				UartSendString(UART_PC, "%\r\n");
+				if (humedad > 85 && (0 > temperatura > 2)) { // se da el riesgo de nevada
+					riesgo_nevada = true;
+					LedOn(LED_3); // enciendo led rojo
+					LedOff(LED_1);
+					UartSendString(UART_PC, "Temperatura: \r");
+					UartSendString(UART_PC, (char*)UartItoa(temperatura, 10));
+					UartSendString(UART_PC, "°C - \r");
+					UartSendString(UART_PC, "Humedad: \r");
+					UartSendString(UART_PC, (char*)UartItoa(humedad, 10));
+					UartSendString(UART_PC, "% - RIESGO DE NEVADA\r\n");
+				} else if(!riesgo_nevada && !radiacion_elevada){
+					LedOn(LED_1); // enciendo led verde
+					LedOff(LED_2);
+					LedOff(LED_3);
 
-			}
+				}
 		}
 		else{
 			LedsOffAll();
