@@ -23,15 +23,19 @@
 #include "neopixel_stripe.h"
 #include "ble_mcu.h"
 #include "tpr40v201.h"
+
 /*==================[macros and definitions]=================================*/
 #define CONFIG_BLINK_PERIOD 500
 #define LED_BT	LED_1
 #define LED_LENGTH 12 
 #define SAMPLE_PERIOD_US 2000 // 2 ms
 
-uint8_t red = 255, green = 255, blue = 255;  // color blanco inicial
-uint8_t brillo = 100;  // Brillo como porcentaje (0-255)
-uint8_t neopixel_encendido = true;  // comienza apagado
+uint8_t red = 255, green = 255, blue = 255;  // inicializo todos los leds en blanco
+uint8_t brillo;  // Brillo como porcentaje (0-255)
+bool neopixel_encendido = true;  // comienza apagado
+bool tecla_arcoiris = false;
+bool tecla_respiracion = false;
+
 
 /*==================[internal data definition]===============================*/
 TaskHandle_t read_gestures_task_handle = NULL;
@@ -45,17 +49,48 @@ void FuncTimerA(void* param){
     vTaskNotifyGiveFromISR(read_gestures_task_handle, pdFALSE);    /* Envía una notificación a la tarea asociada a read gestures */
 }
 
+void RainbowEffect(void){
+    uint16_t hue = 0;
+    uint16_t ciclo = 120;
+    while (ciclo > 0){
+        NeoPixelRainbow(hue,255,255,1);
+        hue += 256;
+        ciclo -= 1;
+        vTaskDelay(pdMS_TO_TICKS(12)); 
+        
+    }
+}
+
+void RespiracionEffect(void){
+    uint16_t brillo = 0;
+    uint16_t delta = 5;
+    uint16_t ciclo = 120;
+    while(ciclo > 0) {
+        NeoPixelAllColor(NeoPixelRgb2Color((red * brillo) / 255,
+                                            (green * brillo) / 255,
+                                            (blue * brillo) / 255));
+
+        // Actualiza el brillo
+        brillo += delta;
+        if (brillo >= 255 || brillo <= 0) {
+            delta = -delta;
+        }
+        ciclo -=1;
+        vTaskDelay(pdMS_TO_TICKS(12)); 
+    }
+}
+
+
 void read_gesturesTask(void *pvParameter){
-    
     while(true){
         ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
         int8_t gesture = GesturetrackpadRead();
         switch (gesture) {
             case GESTURE_UP:
-                if (brillo < 255) {
-                    printf("brillo: %d",  brillo);
-                    brillo += (uint8_t)(255 * 0.10);  // Aumenta un 10%
-                    printf("brillo: %d",brillo);
+                if (brillo < 215) {
+                    printf("brillo: %d \n",  brillo);
+                    brillo += 40;  
+                    printf("brillo: %d \n",brillo);
                 if (brillo > 255) brillo = 255;  // Limita a 255 máximo
                 }
                 if (neopixel_encendido) {
@@ -64,12 +99,14 @@ void read_gesturesTask(void *pvParameter){
                         (green * brillo) / 255,
                         (blue * brillo) / 255));
                 }
+                vTaskDelay(500 / portTICK_PERIOD_MS);
                 break;
             case GESTURE_DOWN:
-                if (brillo > 0){
-                    printf("brillo: %d",brillo);
-                    brillo -= 10;
-                    printf("brillo: %d",brillo);
+                if (brillo > 40){
+                    printf("brillo: %d \n",brillo);
+                    brillo -= 40;
+                    printf("brillo: %d \n",brillo);
+                    NeoPixelAllColor(NeoPixelRgb2Color((red * brillo) / 255,(green * brillo) / 255,(blue * brillo) / 255));
                 } 
                 if (brillo == 0){
                     break;
@@ -77,10 +114,11 @@ void read_gesturesTask(void *pvParameter){
                 if (neopixel_encendido){
                     NeoPixelAllColor(NeoPixelRgb2Color((red * brillo) / 255,(green * brillo) / 255,(blue * brillo) / 255));
                 }
+                vTaskDelay(500 / portTICK_PERIOD_MS);
                 break;
             case GESTURE_FORWARD:
                 neopixel_encendido = true;
-                NeoPixelAllColor(NeoPixelRgb2Color(255, 255, 255));  //enciende todos los leds de blanco con el brillo al maximo
+                NeoPixelAllColor(NeoPixelRgb2Color(red, green, blue));  //enciende todos los leds de blanco con el brillo al maximo
                 break;
             case GESTURE_BACK:
                 neopixel_encendido = false;
@@ -103,6 +141,7 @@ void read_gesturesTask(void *pvParameter){
 void read_data(uint8_t * data, uint8_t length){  // interrupcion desde el bluetooth, para cambiar un color por ejemplo
 	uint8_t i = 1;
 	char msg[30];
+    bool rainbow_mode = false;
 
 	if(data[0] == 'R'){
         /* El slidebar Rojo envía los datos con el formato "R" + value + "A" */
@@ -132,7 +171,25 @@ void read_data(uint8_t * data, uint8_t length){  // interrupcion desde el blueto
 			i++;
 		}
 	}
-    NeoPixelAllColor(NeoPixelRgb2Color(red, green, blue));
+    else if(data[0] == 'A'){
+        tecla_arcoiris = true;
+        RainbowEffect();
+	}
+
+    else if(data[0] == 'O'){
+        tecla_arcoiris = false;
+        tecla_respiracion = false;
+    }
+
+    if (!rainbow_mode) {
+		NeoPixelAllColor(NeoPixelRgb2Color(red, green, blue));
+	}
+
+    else if(data[0] == 'B'){
+        tecla_respiracion = true;
+        RespiracionEffect();
+        
+	}
     /* Se envía una realimentación de los valores actuales de brillo del LED */
     sprintf(msg, "R: %d, G: %d, B: %d\n", red, green, blue);
     BleSendString(msg);

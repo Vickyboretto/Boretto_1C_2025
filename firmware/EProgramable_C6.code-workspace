@@ -106,7 +106,8 @@
             "mpu6050.h": "c",
             "i2c_mcu.h": "c",
             "stdio.h": "c",
-            "limits": "c"
+            "limits": "c",
+            "tpr40v201.h": "c"
         },
     },
     "tasks": {
