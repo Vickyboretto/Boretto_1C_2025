@@ -4,9 +4,30 @@
  *
  * Este proyecto ejemplifica el uso del módulo de comunicación Bluetooth Low Energy (BLE) 
  * junto con el manejo de tiras de LEDs RGB. 
- * Permite manejar la tonalidad e intensidad del LED RGB incluído en la placa ESP-EDU, 
- * mediante una aplicación móvil.
+ * Permite manejar mediante un Gesture Trackpad el encendido y apagado de la tira neopixel, ademas de 
+ * manejar la intensidad de los LEDs.
+ * Y, por medio de bluetooth se puede elegir un color o un modo (arcoiris o respiracion).
+ * 
+ * @section Neopixel Stripe Connection
  *
+ * |  ESP32 Pin     | Neopixel Pin 	|
+ * |:--------------:|:--------------|
+ * |   GND  	 	| 	 GND		|
+ * |   VCC     	    |    5V     	| 
+ * |  DATA INPUT   	|    GPIO16    	| 
+ * 
+ * @section Gesture Trackpad Connection
+ * 
+ * |  ESP32 Pin     | Gesture Trackpad Pin |
+ * |:--------------:|:---------------------|
+ * |     GND  	 	|         GND	       |
+ * |     VCC   	    |         3V3          | 
+ * |    I/O 4   	|         GPIO_0       | 
+ * |    I/O 5   	|         GPIO_1       | 
+ * |    I/O 1   	|         GPIO_2       | 
+ * |    I/O 3   	|         GPIO_3       | 
+ * 
+ * 
  * @author Maria Victoria Boretto (vickybore00@gmail.com)
  *
  */
@@ -48,10 +69,12 @@ TaskHandle_t read_gestures_task_handle = NULL;
 void FuncTimerA(void* param){
     vTaskNotifyGiveFromISR(read_gestures_task_handle, pdFALSE);    /* Envía una notificación a la tarea asociada a read gestures */
 }
-
+/**
+ * @brief Función que realiza el modo arcoiris
+ */
 void RainbowEffect(void){
     uint16_t hue = 0;
-    uint16_t ciclo = 120;
+    uint16_t ciclo = 150;
     while (ciclo > 0){
         NeoPixelRainbow(hue,255,255,1);
         hue += 256;
@@ -60,27 +83,35 @@ void RainbowEffect(void){
         
     }
 }
-
+/**
+ * @brief Función que realiza el modo respiracion
+ */
 void RespiracionEffect(void){
-    uint16_t brillo = 0;
-    uint16_t delta = 5;
-    uint16_t ciclo = 120;
-    while(ciclo > 0) {
-        NeoPixelAllColor(NeoPixelRgb2Color((red * brillo) / 255,
-                                            (green * brillo) / 255,
-                                            (blue * brillo) / 255));
-
-        // Actualiza el brillo
-        brillo += delta;
-        if (brillo >= 255 || brillo <= 0) {
-            delta = -delta;
+    uint16_t brillo;
+    uint16_t ciclo = 2;
+    while(ciclo > 0){
+        for (brillo = 255; brillo > 0; brillo -= 3) {
+            NeoPixelAllColor(NeoPixelRgb2Color((brillo),
+                                                (brillo),
+                                                (brillo) ));
+            printf("bajando brillo: %d\r\n", brillo);
+            vTaskDelay(30 / portTICK_PERIOD_MS);
         }
-        ciclo -=1;
-        vTaskDelay(pdMS_TO_TICKS(12)); 
+        for (brillo = 0; brillo <= 255; brillo += 3) {
+            NeoPixelAllColor(NeoPixelRgb2Color((brillo),
+                                                    (brillo) ,
+                                                    (brillo) ));
+            printf("subiendo brillo: %d\r\n", brillo);
+            vTaskDelay(30 / portTICK_PERIOD_MS);
     }
+    ciclo -= 1;
+    }
+    
+    
 }
-
-
+/**
+ * @brief Tarea que se encarga de leer los gestos que se realizan en el Gesture Trackpad
+ */
 void read_gesturesTask(void *pvParameter){
     while(true){
         ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
@@ -91,7 +122,7 @@ void read_gesturesTask(void *pvParameter){
                     printf("brillo: %d \n",  brillo);
                     brillo += 40;  
                     printf("brillo: %d \n",brillo);
-                if (brillo > 255) brillo = 255;  // Limita a 255 máximo
+                if (brillo > 255) brillo = 255;  
                 }
                 if (neopixel_encendido) {
                     NeoPixelAllColor(NeoPixelRgb2Color(
@@ -129,70 +160,48 @@ void read_gesturesTask(void *pvParameter){
     }
     }
 }
-
-
 /**
- * @brief Función a ejecutarse ante un interrupción de recepción 
- * a través de la conexión BLE.
+ * @brief Función a ejecutarse ante una interrupción de recepción de datos a través de la conexión BLE.
  * 
  * @param data      Puntero a array de datos recibidos
  * @param length    Longitud del array de datos recibidos
  */
-void read_data(uint8_t * data, uint8_t length){  // interrupcion desde el bluetooth, para cambiar un color por ejemplo
+void read_data(uint8_t * data, uint8_t length){  // interrupcion desde el bluetooth, para cambiar un color o elegir un modo
 	uint8_t i = 1;
 	char msg[30];
     bool rainbow_mode = false;
-
 	if(data[0] == 'R'){
-        /* El slidebar Rojo envía los datos con el formato "R" + value + "A" */
 		red = 0;
 		while(data[i] != 'A'){
-            /* Convertir el valor ASCII a un valor entero */
 			red = red * 10;
 			red = red + (data[i] - '0');
 			i++;
 		}
 	}else if(data[0] == 'G'){   
-        /* El slidebar Verde envía los datos con el formato "G" + value + "A" */
 		green = 0;
 		while(data[i] != 'A'){
-            /* Convertir el valor ASCII a un valor entero */
 			green = green * 10;
 			green = green + (data[i] - '0');
 			i++;
 		}
 	}else if(data[0] == 'B'){
-        /* El slidebar Azul envía los datos con el formato "B" + value + "A" */
 		blue = 0;
 		while(data[i] != 'A'){
-            /* Convertir el valor ASCII a un valor entero */
 			blue = blue * 10;
 			blue = blue + (data[i] - '0');
 			i++;
 		}
-	}
-    else if(data[0] == 'A'){
+	}else if(data[0] == 'C'){
         tecla_arcoiris = true;
         RainbowEffect();
-	}
-
-    else if(data[0] == 'O'){
-        tecla_arcoiris = false;
-        tecla_respiracion = false;
-    }
-
-    if (!rainbow_mode) {
-		NeoPixelAllColor(NeoPixelRgb2Color(red, green, blue));
-	}
-
-    else if(data[0] == 'B'){
+	}else if(data[0] == 'Z'){
         tecla_respiracion = true;
         RespiracionEffect();
-        
+	}if (!rainbow_mode) {
+		NeoPixelAllColor(NeoPixelRgb2Color(red, green, blue));
+    }if (!tecla_respiracion) {
+		NeoPixelAllColor(NeoPixelRgb2Color(red, green, blue));
 	}
-    /* Se envía una realimentación de los valores actuales de brillo del LED */
-    sprintf(msg, "R: %d, G: %d, B: %d\n", red, green, blue);
-    BleSendString(msg);
 }
 
 /*==================[external functions definition]==========================*/
@@ -214,16 +223,14 @@ void app_main(void){
 
     LedsInit();
     BleInit(&ble_configuration);
-    /* Se inicializa el LED RGB de la placa */
     NeoPixelInit(BUILT_IN_RGB_LED_PIN, LED_LENGTH, color);
-    GesturetrackpadInit();   // inicializo el GT
-   
+    GesturetrackpadInit();   
     xTaskCreate(&read_gesturesTask, "Read gestures", 2048, NULL, 5, &read_gestures_task_handle);
     TimerStart(TIMER_A);
 
     while(1){  
         vTaskDelay(CONFIG_BLINK_PERIOD / portTICK_PERIOD_MS);
-        switch(BleStatus()){   //dependiendo del estado del bluetooth se apagan, prenden o togglea el led
+        switch(BleStatus()){   //dependiendo del estado del bluetooth se apaga, prende o togglea el led
             case BLE_OFF:
                 LedOff(LED_BT);
             break;
@@ -235,9 +242,6 @@ void app_main(void){
             break;
         }
     }
-    
-
-
 }
 
 /*==================[end of file]============================================*/
